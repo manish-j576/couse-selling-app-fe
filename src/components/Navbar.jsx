@@ -1,10 +1,10 @@
 import { useState } from "react";
 import LoginModal from "./LoginModal";
-
+import { useAuth } from "../Provider/AuthContext";
 export function Navbar(){
-  const [isLoggedIn ,setIsLoggedIn]=useState(false)
   const [showModal,setShowModal ]=useState(false)
   const [loading, setLoading] = useState(false);
+  const authContext = useAuth();
 
   function HandleLogout(){
     setLoading(true)
@@ -22,10 +22,11 @@ export function Navbar(){
               <span class="self-center text-heading font-semibold whitespace-nowrap text-blue-600">
                 Learning Hours
               </span>
+
             </a>
           </div>
           <div>
-            {isLoggedIn ? (
+            {authContext.isLoggedIn ? (
               <span className="flex justify-around">
                 <button
                   onClick={() => HandleLogout()}
@@ -47,7 +48,6 @@ export function Navbar(){
                 </button>
                 {showModal && (
                   <LoginModal
-                    setIsLoggedIn={setIsLoggedIn}
                     setShowModal={setShowModal}
                   ></LoginModal>
                 )}

@@ -1,7 +1,8 @@
 import { useRef, useState } from "react";
 import { SendLoginRequest } from "../api/auth";
-
-function LoginModal({ setIsLoggedIn, setShowModal }) {
+import { useAuth } from "../Provider/AuthContext";
+function LoginModal({ setShowModal }) {
+  const authContext = useAuth()
   const email = useRef("")
   const password = useRef("")
   const [loading, setLoading] = useState(false);
@@ -12,7 +13,7 @@ function LoginModal({ setIsLoggedIn, setShowModal }) {
       if(userLoginResponse.status == 200){
         console.log(userLoginResponse.data.token)
         localStorage.setItem("token", userLoginResponse.data.token);
-        setIsLoggedIn(true);
+        authContext.setIsLoggedIn(true);
         setLoading(false);
         setShowModal(false);
       }else{
