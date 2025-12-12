@@ -12,7 +12,7 @@ export function Navbar(){
     window.location.reload();
   }
     return (
-      <nav class="bg-neutral-primary w-full z-20 top-0 start-0 border-b border-default ">
+      <nav class=" bg-linear-to-r from-black via-[#030712] to-[#1e293b] w-full z-20 sticky top-0 start-0 border-b border-default h-16">
         <div class="max-w-7xl flex flex-wrap items-center justify-between mx-auto p-4 ">
           <div className=" relative left-5 text-2xl">
             <a
@@ -22,7 +22,6 @@ export function Navbar(){
               <span class="self-center text-heading font-semibold whitespace-nowrap text-blue-600">
                 Learning Hours
               </span>
-
             </a>
           </div>
           <div>
@@ -34,7 +33,8 @@ export function Navbar(){
                 >
                   {loading ? "Loading.." : "Logout"}
                 </button>
-              </span>):(
+              </span>
+            ) : (
               <span className="flex justify-around">
                 <button
                   onClick={() => setShowModal(true)}
@@ -47,9 +47,7 @@ export function Navbar(){
                   Signup
                 </button>
                 {showModal && (
-                  <LoginModal
-                    setShowModal={setShowModal}
-                  ></LoginModal>
+                  <LoginModal setShowModal={setShowModal}></LoginModal>
                 )}
               </span>
             )}
