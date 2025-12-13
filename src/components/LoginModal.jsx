@@ -9,19 +9,21 @@ function LoginModal() {
   const password = useRef("")
   const [loading, setLoading] = useState(false);
  async function HandleLogin(){
+  try{
     setLoading(true)
       const userLoginResponse = await SendLoginRequest(email.current.value,password.current.value)
       console.log(userLoginResponse)
       if(userLoginResponse.status == 200){
-        console.log(userLoginResponse.data.token)
         localStorage.setItem("token", userLoginResponse.data.token);
         authContext.setIsLoggedIn(true);
         setLoading(false);
         LoginModalContext.setShowLoginModal(false);
-      }else{
-        alert(userLoginResponse.data.message)
       }
+    }catch(error){
+        alert(error.response.data.message)
+          setLoading(false);
 
+    }
   }
     return (
       <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
@@ -57,6 +59,5 @@ function LoginModal() {
         </div>
       </div>
     );
-                };
-
-export default LoginModal;
+  }
+export default LoginModal

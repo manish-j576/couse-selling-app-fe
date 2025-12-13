@@ -10,4 +10,4 @@ export function SignupModalProvider ({children}){
     </SignupModalContext.Provider>
 }
 
-export const useSignupModal= () => useContext(SignupModalContext)
+export const useSignupModal = () => useContext(SignupModalContext)
