@@ -2,9 +2,11 @@ import { useRef, useState } from "react";
 import { SendLoginRequest } from "../api/auth";
 import { useAuth } from "../Provider/AuthContext";
 import { useLoginModal } from "../Provider/LoginModalContext";
+import { useHeroSection } from "../Provider/HeroSectionContext";
 function LoginModal() {
   const authContext = useAuth()
   const LoginModalContext = useLoginModal()
+  const HeroSectionContext = useHeroSection()
   const email = useRef("")
   const password = useRef("")
   const [loading, setLoading] = useState(false);
@@ -15,7 +17,9 @@ function LoginModal() {
       console.log(userLoginResponse)
       if(userLoginResponse.status == 200){
         localStorage.setItem("token", userLoginResponse.data.token);
+        localStorage.setItem("isLoggedIn", "true");
         authContext.setIsLoggedIn(true);
+        HeroSectionContext.setHomeComponentMounted(true);
         setLoading(false);
         LoginModalContext.setShowLoginModal(false);
       }

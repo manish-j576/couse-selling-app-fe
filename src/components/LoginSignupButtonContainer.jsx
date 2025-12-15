@@ -9,11 +9,11 @@ export function LoginSignupButtonContainer (){
     const LoginModalContext = useLoginModal()
     const SignupModalContext = useSignupModal()
     return (
-      <span className="flex justify-around">
+      <div className="flex justify-around items-center">
         <LoginButton></LoginButton>
         <SignupButton></SignupButton>
         {LoginModalContext.showLoginModal && <LoginModal></LoginModal>}
         {SignupModalContext.showSignupModal && <SignupModal></SignupModal>}
-      </span>
+      </div>
     );
 }

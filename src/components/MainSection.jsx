@@ -2,6 +2,7 @@ import { HeroSection } from "./HeroSection";
 import { LeftSection } from "./Leftsection";
 import { useAuth } from "../Provider/AuthContext";
 import { useLeftSectionContext } from "../Provider/LeftSectionContext";
+import { HeroSectionContextProvider } from "../Provider/HeroSectionContext";
 export function MainSection(){
   const LeftSectionContext = useLeftSectionContext()
   console.log(LeftSectionContext)
@@ -18,7 +19,10 @@ export function MainSection(){
           </div>
         )}
         <div className="flex-1">
+          <HeroSectionContextProvider>
+            
           <HeroSection></HeroSection>
+          </HeroSectionContextProvider>
         </div>
       </div>
     );

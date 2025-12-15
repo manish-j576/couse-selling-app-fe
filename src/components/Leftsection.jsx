@@ -1,4 +1,4 @@
-import { House, Menu , PanelLeftClose} from "lucide-react";
+import { House, Layers, Menu , MonitorPlay, PanelLeftClose} from "lucide-react";
 import { useLeftSectionContext } from "../Provider/LeftSectionContext";
 
 export function LeftSection (){
@@ -26,26 +26,38 @@ export function LeftSection (){
             )}
           </button>
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-1 text-xl transition-all ease-in-out">
           <div className="w-full bg-red-800 flex justify-center p-2 font-medium cursor-pointer hover:bg-red-500 ">
-            {LeftSectionContext.isLeftSectionfull ? "Home" : <House></House>}
-          </div>
-        </div>
-        <div>
-          <div className="w-full bg-red-800 flex justify-center p-2 font-medium cursor-pointer hover:bg-red-500">
-            {LeftSectionContext.isLeftSectionfull ? (
-              "Purchases"
-            ) : (
-              <House></House>
-            )}
-          </div>
-        </div>
-        <div>
-          <div className="w-full bg-red-800 flex justify-center p-2 font-medium cursor-pointer hover:bg-red-500">
-            {LeftSectionContext.isLeftSectionfull ? "Courses" : <House></House>}
-          </div>
-        </div>
+            <button>
 
+            {LeftSectionContext.isLeftSectionfull ? "Home" : <House size={24}></House>}
+            </button>
+          </div>
+          <div>
+            <div className="w-full bg-red-800 flex justify-center p-2 font-medium cursor-pointer hover:bg-red-500">
+              <button>
+
+              {LeftSectionContext.isLeftSectionfull ? (
+                "My Courses"
+              ) : (
+                <MonitorPlay size={24}></MonitorPlay>
+              )}
+              </button>
+            </div>
+          </div>
+          <div>
+            <div className="w-full bg-red-800 flex justify-center p-2 font-medium cursor-pointer hover:bg-red-500">
+              <button>
+
+              {LeftSectionContext.isLeftSectionfull ? (
+                "Courses"
+              ) : (
+                <Layers size={24}></Layers>
+              )}
+              </ button>
+            </div>
+          </div>
+        </div>
       </div>
     );
 }

@@ -4,13 +4,13 @@ import { LogoutButton } from "./LogoutButton";
 import { LoginSignupButtonContainer } from "./LoginSignupButtonContainer";
 import { Logo } from "./Logo";
 export function Navbar(){
-  const [showModal,setShowModal ]=useState(false)
   const [loading, setLoading] = useState(false);
   const authContext = useAuth();
 
   function HandleLogout(){
     setLoading(true)
     localStorage.removeItem("token");
+    localStorage.removeItem("isLoggedIn");
     window.location.reload();
   }
     return (
