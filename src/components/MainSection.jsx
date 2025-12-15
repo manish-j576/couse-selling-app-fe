@@ -8,7 +8,7 @@ export function MainSection(){
   console.log(LeftSectionContext)
   const AuthContext = useAuth()
     return (
-      <div className="flex w-full max-h-[calc(100vh-4rem)] bg-green-600">
+      <div className="flex w-full  max-h-[calc(100vh-4rem)] bg-green-600">
         {AuthContext.isLoggedIn && (
           <div
             className={`${
@@ -20,8 +20,7 @@ export function MainSection(){
         )}
         <div className="flex-1">
           <HeroSectionContextProvider>
-            
-          <HeroSection></HeroSection>
+            <HeroSection></HeroSection>
           </HeroSectionContextProvider>
         </div>
       </div>

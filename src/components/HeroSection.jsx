@@ -13,7 +13,7 @@ export function HeroSection(){
     }
     const greetings = getGreeting()
     return (
-      <div className="w-full h-[calc(100vh-4rem)]  text-white z-10 bg-pink-900">
+      <div className="w-full h-[calc(100vh-4rem)]  text-white z-10 bg-pink-900 overflow-y-scroll">
         <div className="w-full p-2 bg-amber-950 flex items-center">
           <h2 className="text-3xl">
         {greetings} !

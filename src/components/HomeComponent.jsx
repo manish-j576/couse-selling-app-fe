@@ -1,22 +1,31 @@
+import axios from "axios";
+import { Card } from "./Card";
+import { useEffect, useState } from "react";
+
 export function HomeComponent (){
+    const [courseDetails , setCourseDetails] = useState([])
+    useEffect(()=>{
+         loadCards();
+    },[])
+    async function loadCards(){
+        const token = localStorage.getItem("token")
+        const response = await axios.get(
+          "http://localhost:3000/api/user/courses/",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        setCourseDetails(response.data);
+    }
     return (
-      <div className="w-full max-w-sm rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
-        {/* Content */}
-        <div className="p-5 space-y-3">
-          <h2 className="text-lg font-semibold text-gray-900">{title}</h2>
-
-          <p className="text-sm text-gray-600 line-clamp-3">{description}</p>
-
-          <div className="flex items-center justify-between pt-2">
-            <span className="text-lg font-bold text-blue-600">₹{price}</span>
-
-            <button
-              className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              Visit Course
-            </button>
-          </div>
+        <div className="p-10 flex gap-10 flex-wrap">
+            {courseDetails.map(course => {
+                return <Card title={course.name} description={course.description} price={course.price}></Card>
+            } )}
         </div>
-      </div>
+      
     );
 }
