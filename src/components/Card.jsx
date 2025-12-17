@@ -1,4 +1,4 @@
-export function Card({title , description , price}){
+export function Card({title , description , price , imgUrl}){
     
     return (
       <div className="w-1/3 h-1/3 max-w-sm rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
@@ -7,7 +7,7 @@ export function Card({title , description , price}){
           <h2 className="text-lg font-semibold text-gray-900">{title}</h2>
 
           <p className="text-sm text-gray-600 line-clamp-3">{description}</p>
-          <img src="https://campustechnology.com/-/media/edu/campustechnology/2019-images/20191209online.jpg"></img>
+          <img src={imgUrl} className="w-full"></img>
           <div className="flex items-center justify-between pt-2">
             <span className="text-lg font-bold text-blue-600">₹{price}</span>
 

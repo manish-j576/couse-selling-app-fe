@@ -14,7 +14,7 @@ export function Navbar(){
     window.location.reload();
   }
     return (
-      <nav class=" bg-linear-to-r from-black via-[#030712] to-[#1e293b] w-full z-20 sticky top-0 start-0 border-b border-default h-16">
+    <nav class=" bg-[#F5F5F5] w-full z-20 sticky top-0 start-0 border-b border-default h-16">
         <div class="max-w-7xl flex flex-wrap items-center justify-between mx-auto p-4 ">
         <Logo></Logo>
           <div>

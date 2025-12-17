@@ -19,9 +19,7 @@ export function MainSection(){
           </div>
         )}
         <div className="flex-1">
-          <HeroSectionContextProvider>
             <HeroSection></HeroSection>
-          </HeroSectionContextProvider>
         </div>
       </div>
     );

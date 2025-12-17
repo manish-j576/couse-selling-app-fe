@@ -1,9 +1,10 @@
-import { createContext , useContext , useState } from "react";
+import { createContext , useContext , useEffect, useState } from "react";
 
 const HeroSectionContext = createContext()
 
 export function HeroSectionContextProvider ({children}){
-    const [isHomeComponentMounted,setHomeComponentMounted] = useState(true);
+  
+  const [isHomeComponentMounted,setHomeComponentMounted] = useState(true);
     const [isPurchaseComponentMounted , setPurchaseComponentMounted] = useState(false);
     const [isCourseComponentMounted , setCourseComponentMounted] = useState(false);
 
