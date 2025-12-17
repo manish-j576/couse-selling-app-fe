@@ -5,18 +5,18 @@ const HeroSectionContext = createContext()
 export function HeroSectionContextProvider ({children}){
   
   const [isHomeComponentMounted,setHomeComponentMounted] = useState(true);
-    const [isPurchaseComponentMounted , setPurchaseComponentMounted] = useState(false);
-    const [isCourseComponentMounted , setCourseComponentMounted] = useState(false);
+    const [isMyCourseComponentMounted , setMyCourseComponentMounted] = useState(false);
+    const [isCoursesComponentMounted , setCoursesComponentMounted] = useState(false);
 
     return (
       <HeroSectionContext.Provider
         value={{
           isHomeComponentMounted,
-          isPurchaseComponentMounted,
-          isCourseComponentMounted,
+          isMyCourseComponentMounted,
+          isCoursesComponentMounted,
           setHomeComponentMounted,
-          setPurchaseComponentMounted,
-          setCourseComponentMounted
+          setMyCourseComponentMounted,
+          setCoursesComponentMounted
         }}
       >
         {children}

@@ -7,20 +7,22 @@ import { LoginModalProvider } from './Provider/LoginModalContext.jsx'
 import { SignupModalProvider } from './Provider/SignupModalContext.jsx'
 import { LeftSectionContextProvider } from './Provider/LeftSectionContext.jsx'
 import { HeroSectionContextProvider } from './Provider/HeroSectionContext.jsx'
+import { BuyModalContextProvider } from './Provider/BuyModalContext.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
     <AuthProvider>
       <LoginModalProvider>
         <SignupModalProvider>
         <LeftSectionContextProvider>
         <HeroSectionContextProvider>
+          <BuyModalContextProvider>
+
 
             <App />
+          </BuyModalContextProvider>
         </HeroSectionContextProvider>
         </LeftSectionContextProvider>
       </SignupModalProvider>
       </LoginModalProvider>
-    </AuthProvider>
-  </StrictMode>,
+    </AuthProvider>,
 )
