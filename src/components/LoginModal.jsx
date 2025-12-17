@@ -65,8 +65,11 @@ function LoginModal() {
             <div className="w-fit px-2">OR</div>
             <div className="w-full border h-0"></div>
           </div>
-          <div className="w-full border px-3 py-2  rounded flex justify-center hover:bg-[#dce6e2] hover:cursor-pointer">
-            <button> Login as admin</button>
+          <div className="w-full border px-3 py-2  rounded flex justify-center hover:bg-[#2dba82] hover:cursor-pointer">
+            <button
+            > Login as admin
+
+            </button>
           </div>
         </div>
       </div>
