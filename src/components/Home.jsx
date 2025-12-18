@@ -1,6 +1,6 @@
 import { Greetings } from "./Greetings";
 
-export default function VHome() {
+export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section with Background Image */}

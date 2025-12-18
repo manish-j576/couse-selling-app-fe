@@ -1,12 +1,11 @@
-import { captureOwnerStack, useRef, useState } from "react";
-import { useSignupModal } from "../Provider/SignupModalContext";
-import { SendLoginRequest, SendSignupRequest } from "../api/auth";
-import axios from "axios";
-import { useAuth } from "../Provider/AuthContext";
+import {  useRef, useState } from "react";
+import { useAdminAuth } from "../Provider/AdminAuthContext";
+import { useAdminSignup } from "../Provider/AdminSignupModalContext";
+import { SendAdminLoginRequest, SendAdminSignupRequest } from "../api/adminAuth";
 
-export function SignupModal(){
-      const SignupModalContext = useSignupModal()
-      const authContext = useAuth()
+export function AdminSignupModal(){
+      const AdminSignupModalContext = useAdminSignup()
+      const adminAuthContext = useAdminAuth()
       const email = useRef("")
       const name = useRef("")
       const username = useRef("")
@@ -17,17 +16,20 @@ export function SignupModal(){
      async function HandleSignup(){
         setLoading(true)
         try{
-          const userSignUpResponse = await SendSignupRequest(name.current.value , username.current.value , email.current.value , password.current.value)
-          console.log(userSignUpResponse)
-          if(userSignUpResponse.status == 200 ){
-            const responseLogin = await SendLoginRequest(email.current.value,password.current.value)
-            if(responseLogin.status == 200){
-              const token = responseLogin.data.token
+          const adminSignUpResponse = await SendAdminSignupRequest(name.current.value , username.current.value , email.current.value , password.current.value)
+          console.log(adminSignUpResponse);
+          if (adminSignUpResponse.status == 200) {
+            const responseLogin = await SendAdminLoginRequest(
+              email.current.value,
+              password.current.value
+            );
+            if (responseLogin.status == 200) {
+              const token = responseLogin.data.token;
               localStorage.setItem("token", token);
-              localStorage.setItem("IsUserLoggedIn","true")
-              authContext.setIsLoggedIn(true);
-              setLoading(false)
-              SignupModalContext.setShowSignupModal(false);
+              localStorage.setItem("isAdminLoggedIn", "true");
+              adminAuthContext.setIsAdminLoggedIn(true);
+              setLoading(false);
+              AdminSignupModalContext.setShowAdminSignupModal(false);
             }
           }
         }catch(error){
@@ -74,7 +76,9 @@ export function SignupModal(){
 
           {/* Close button */}
           <button
-            onClick={() => SignupModalContext.setShowSignupModal(false)}
+            onClick={() =>
+              AdminSignupModalContext.setShowAdminSignupModal(false)
+            }
             className="mt-4 w-full text-red-600 font-semibold"
           >
             Close

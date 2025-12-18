@@ -10,10 +10,15 @@ import { HeroSectionContextProvider } from './Provider/HeroSectionContext.jsx'
 import { BuyModalContextProvider } from './Provider/BuyModalContext.jsx'
 import { BrowserRouter } from "react-router-dom";
 import { AdminLoginContextProvider } from './Provider/AdminLoginModalContext.jsx'
+import { AdminSignupContextProvider } from './Provider/AdminSignupModalContext.jsx'
+import { AdminAuthContextProvider } from './Provider/AdminAuthContext.jsx'
 
 createRoot(document.getElementById('root')).render(
     <AuthProvider>
+      <AdminAuthContextProvider>
+
       <AdminLoginContextProvider>
+      <AdminSignupContextProvider>
 
       <LoginModalProvider>
         <SignupModalProvider>
@@ -29,6 +34,8 @@ createRoot(document.getElementById('root')).render(
         </LeftSectionContextProvider>
       </SignupModalProvider>
       </LoginModalProvider>
+      </AdminSignupContextProvider>
       </AdminLoginContextProvider>
+      </AdminAuthContextProvider>
     </AuthProvider>,
 )

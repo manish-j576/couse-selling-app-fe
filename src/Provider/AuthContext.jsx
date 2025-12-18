@@ -4,17 +4,17 @@ import { createContext , useState , useContext, useEffect } from "react";
 const AuthContext = createContext(null);
 
 export function AuthProvider ({children}){
-    const [isLoggedIn,setIsLoggedIn] = useState(false);
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
     useEffect(() => {
-      const savedLogin = localStorage.getItem("isLoggedIn");
+      const savedLogin = localStorage.getItem("isUserLoggedIn");
       if (savedLogin === "true") {
-        setIsLoggedIn(true);
+        setIsUserLoggedIn(true);
       }
     }, []);
 
     return (
-        <AuthContext.Provider value={{isLoggedIn , setIsLoggedIn}}>
+        <AuthContext.Provider value={{isUserLoggedIn , setIsUserLoggedIn}}>
             {children}
         </AuthContext.Provider>
     )

@@ -3,6 +3,7 @@ import { SendLoginRequest } from "../api/auth";
 import { useAuth } from "../Provider/AuthContext";
 import { useLoginModal } from "../Provider/LoginModalContext";
 import { useHeroSection } from "../Provider/HeroSectionContext";
+import { Link, useNavigate } from "react-router-dom";
 function LoginModal() {
   const authContext = useAuth()
   const LoginModalContext = useLoginModal()
@@ -17,8 +18,8 @@ function LoginModal() {
       console.log(userLoginResponse)
       if(userLoginResponse.status == 200){
         localStorage.setItem("token", userLoginResponse.data.token);
-        localStorage.setItem("isLoggedIn", "true");
-        authContext.setIsLoggedIn(true);
+        localStorage.setItem("isUserLoggedIn", "true");
+        authContext.setIsUserLoggedIn(true);
         HeroSectionContext.setHomeComponentMounted(true);
         setLoading(false);
         LoginModalContext.setShowLoginModal(false);
@@ -65,12 +66,15 @@ function LoginModal() {
             <div className="w-fit px-2">OR</div>
             <div className="w-full border h-0"></div>
           </div>
+          <Link to="/admin" reloadDocument>
           <div className="w-full border px-3 py-2  rounded flex justify-center hover:bg-[#2dba82] hover:cursor-pointer">
             <button
+            
             > Login as admin
 
             </button>
           </div>
+            </Link>
         </div>
       </div>
     );

@@ -10,7 +10,7 @@ export function Navbar(){
   function HandleLogout(){
     setLoading(true)
     localStorage.removeItem("token");
-    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("isUserLoggedIn");
     window.location.reload();
   }
     return (
@@ -18,7 +18,7 @@ export function Navbar(){
         <div class="max-w-7xl flex flex-wrap items-center justify-between mx-auto p-4 ">
         <Logo></Logo>
           <div>
-            {authContext.isLoggedIn ? (<LogoutButton loading={loading}  HandleLogout={HandleLogout}></LogoutButton>) : (<LoginSignupButtonContainer></LoginSignupButtonContainer>)}
+            {authContext.isUserLoggedIn ? (<LogoutButton loading={loading}  HandleLogout={HandleLogout}></LogoutButton>) : (<LoginSignupButtonContainer></LoginSignupButtonContainer>)}
           </div>
         </div>
       </nav>
