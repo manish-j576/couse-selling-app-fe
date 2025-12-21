@@ -10,7 +10,7 @@ export function AdminNavbar(){
 
   function HandleLogoutAdmin(){
     setLoading(true)
-    localStorage.removeItem("token");
+    localStorage.removeItem("admintoken");
     localStorage.removeItem("isAdminLoggedIn");
     window.location.reload();
   }

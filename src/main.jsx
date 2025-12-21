@@ -12,6 +12,7 @@ import { BrowserRouter } from "react-router-dom";
 import { AdminLoginContextProvider } from './Provider/AdminLoginModalContext.jsx'
 import { AdminSignupContextProvider } from './Provider/AdminSignupModalContext.jsx'
 import { AdminAuthContextProvider } from './Provider/AdminAuthContext.jsx'
+import { AdminButtonContextProvider } from './Provider/AdminButtonContext.jsx'
 
 createRoot(document.getElementById('root')).render(
     <AuthProvider>
@@ -19,6 +20,7 @@ createRoot(document.getElementById('root')).render(
 
       <AdminLoginContextProvider>
       <AdminSignupContextProvider>
+      <AdminButtonContextProvider>
 
       <LoginModalProvider>
         <SignupModalProvider>
@@ -34,6 +36,7 @@ createRoot(document.getElementById('root')).render(
         </LeftSectionContextProvider>
       </SignupModalProvider>
       </LoginModalProvider>
+      </AdminButtonContextProvider>
       </AdminSignupContextProvider>
       </AdminLoginContextProvider>
       </AdminAuthContextProvider>

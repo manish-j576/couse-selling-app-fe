@@ -21,7 +21,7 @@ export default function AdminHome() {
               <h2 className="mb-4 text-5xl font-bold leading-tight text-balance">
                 Admin Dashboard
               </h2>
-              <p className="mb-8 text-xl leading-relaxed text-white/95">
+              <div className="mb-8 text-xl leading-relaxed text-white/95">
                 <ul>
                   <li>
                     <b>Create Course</b> - Create a new course
@@ -36,7 +36,7 @@ export default function AdminHome() {
                     <b>Preview Course</b> - Preview a course{" "}
                   </li>
                 </ul>
-              </p>
+              </div>
               <button className="rounded-lg bg-white px-8 py-3 text-base font-semibold text-blue-600 hover:bg-blue-50">
                 Get Started
               </button>

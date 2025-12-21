@@ -17,7 +17,7 @@ export function AdminLoginModal(){
           const adminLoginResponse = await SendAdminLoginRequest(email.current.value,password.current.value)
           console.log(adminLoginResponse)
           if (adminLoginResponse.status == 200) {
-            localStorage.setItem("token", adminLoginResponse.data.token);
+            localStorage.setItem("admintoken", adminLoginResponse.data.token);
             localStorage.setItem("isAdminLoggedIn", "true");
             AdminAuthContext.setIsAdminLoggedIn(true);
             setLoading(false);
