@@ -1,29 +1,50 @@
 import { useEffect, useRef, useState } from "react"
-import { SendPreviewCourseRequest } from "../api/course";
+import { SendPreviewCourseRequest, UpdateCourseRequest } from "../api/course";
+import { useUpdate } from "../Provider/UpdateCourseContext";
+import { useAdminButton } from "../Provider/AdminButtonContext";
 
 export function SelectCourseComponent(){
-        const AdminButtonContext = useAdminButton()
     const [CoursesArray , SetCoursesArray] = useState([])
-    const [SelectedCourse , setSelectedCourse] = useState()
-    const [parameter , setParameter] = useState()
+    const [loading , setLoading] = useState(false)
+    const AdminButtonContext = useAdminButton()
+    const UpdateContext = useUpdate()
+    const courseId = useRef()
+    const parameter = useRef()
     const newValue = useRef()
     useEffect(()=>{
         sendRequest();
     },[])
 
-    async function  sendRequest() {
-        const response =await SendPreviewCourseRequest();
-        SetCoursesArray(response.data)
-        // console.log(response.data)   
-    }
+     async function sendRequest() {
+       const response = await SendPreviewCourseRequest();
+       SetCoursesArray(response.data);
+     }
+     
+    async function handleSubmit() {
+        try{
+            setLoading(true)
+            UpdateContext.setCourseId(courseId.current.value)
+            UpdateContext.setParameter(parameter.current.value);
+            UpdateContext.setNewValue(newValue.current.value)
+            console.log(courseId.current.value);
+            const response = await UpdateCourseRequest(
+                courseId.current.value,
+                parameter.current.value,
+                newValue.current.value
+            );
+            alert(response.data.message);
+            setLoading(false)
+            AdminButtonContext.setUpdateCourseModal(false);
+        }catch(error){
+            console.log(error)
+        }
+        }
+    
     return (
       <div className="w-full h-full flex flex-col gap-2">
         <select
           className="w-full px-3 py-2 border rounded-lg"
-          value={SelectedCourse}
-          onChange={(e) => {
-            setSelectedCourse(e.target.value);
-          }}
+          ref={courseId}
         >
           {CoursesArray.map((element) => {
             return <option value={element._id}>{element.name}</option>;
@@ -31,10 +52,7 @@ export function SelectCourseComponent(){
         </select>
         <select
           className="w-full px-3 py-2 border rounded-lg"
-          value={parameter}
-          onChange={(e) => {
-            setParameter(e.target.value);
-          }}
+          ref={parameter}
         >
           <option value="title">Title</option>
           <option value="description">Description</option>

@@ -39,3 +39,47 @@ export async function SendPreviewCourseRequest(){
   );
   return previewCourseResponse;
 }
+
+export async function  UpdateCourseRequest(courseId, parameter , newValue) {
+  console.log("inside update request")
+  console.log(courseId);
+  
+  const token = localStorage.getItem("admintoken")
+  if(parameter == "price"){
+    newValue = Number(newValue)
+  }
+  const response = await axios.patch(
+    `http://localhost:3000/api/admin/changeCourse/${courseId}`,
+    {
+      [parameter]:newValue
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  return response;
+  
+}
+
+export async function DeleteCourseRequest(courseId) {
+  const token = localStorage.getItem("admintoken")
+  console.log("token here  : " + token)
+  const response = await axios.delete(
+    "http://localhost:3000/api/admin/deleteCourse",
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      data: {
+        courseId:courseId
+      }
+    },
+    
+    
+  );
+  return response
+}

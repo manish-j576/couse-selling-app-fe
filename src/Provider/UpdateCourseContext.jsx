@@ -3,13 +3,13 @@ import { createContext , useContext , useState } from "react";
 const UpdateContext = createContext();
 
 export function UpdateContextProvider ({children}){
-    const [courseName , setCourseName]  = useState()
+    const [courseId, setCourseId] = useState();
     const [newValue , setNewValue] = useState()
     const [parameter , setParameter] = useState()
     const [loading , setLoading] = useState(false)
     const obj = {
-      courseName,
-      setCourseName,
+      courseId,
+      setCourseId,
       newValue,
       setNewValue,
       parameter,
@@ -23,4 +23,4 @@ export function UpdateContextProvider ({children}){
 
 }
 
-const useUpdate = () => useContext(UpdateContext)
+export const useUpdate = () => useContext(UpdateContext)
