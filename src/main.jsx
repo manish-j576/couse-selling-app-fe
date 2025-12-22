@@ -13,6 +13,7 @@ import { AdminLoginContextProvider } from './Provider/AdminLoginModalContext.jsx
 import { AdminSignupContextProvider } from './Provider/AdminSignupModalContext.jsx'
 import { AdminAuthContextProvider } from './Provider/AdminAuthContext.jsx'
 import { AdminButtonContextProvider } from './Provider/AdminButtonContext.jsx'
+import { UpdateContextProvider } from './Provider/UpdateCourseContext.jsx'
 
 createRoot(document.getElementById('root')).render(
     <AuthProvider>
@@ -21,7 +22,7 @@ createRoot(document.getElementById('root')).render(
       <AdminLoginContextProvider>
       <AdminSignupContextProvider>
       <AdminButtonContextProvider>
-
+      <UpdateContextProvider>
       <LoginModalProvider>
         <SignupModalProvider>
         <LeftSectionContextProvider>
@@ -36,6 +37,7 @@ createRoot(document.getElementById('root')).render(
         </LeftSectionContextProvider>
       </SignupModalProvider>
       </LoginModalProvider>
+      </UpdateContextProvider>
       </AdminButtonContextProvider>
       </AdminSignupContextProvider>
       </AdminLoginContextProvider>

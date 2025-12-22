@@ -24,3 +24,18 @@ export async function CreateCourseRequest(title , description , price , imageURL
     );
     return createCourseResponse;
 }
+
+export async function SendPreviewCourseRequest(){
+  const token = localStorage.getItem("admintoken")
+  console.log(token)
+  const previewCourseResponse = await axios.get(
+    "http://localhost:3000/api/admin/showCourses",
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  return previewCourseResponse;
+}
